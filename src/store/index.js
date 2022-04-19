@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import {loginByUserName,getUserInfo} from '@/api/login';
 import {setToken} from '@/utils/auth';
 
+import edit from './module/edit';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,13 +16,13 @@ export default new Vuex.Store({
         name: '首页',
         class: 'el-icon-s-home',
       },{
-        path: '/about',
-        name: '关于',
-        class: 'el-icon-s-custom',
+        path: '/edit',
+        name: '创作',
+        class: 'el-icon-brush',
       },{
         path: '/statistics',
         name: '统计',
-        class: 'el-icon-s-data',
+        class: 'el-icon-data-line',
       }]
     },
 
@@ -68,5 +70,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    edit
   },
 });
