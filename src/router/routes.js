@@ -21,6 +21,10 @@ export const asyncRoutes = [
                 path: 'statistics',
                 name: 'Statistics',
                 component: () => import(/* webpackChunkName: "Statistics" */ '@/views/Statistics.vue'),
+            },{
+                path: 'edit',
+                name: 'Edit',
+                component: () => import(/* webpackChunkName: "Edit" */ '@/views/Edit.vue'),
             }
         ]
     }
