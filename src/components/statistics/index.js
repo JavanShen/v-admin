@@ -1,1 +1,1 @@
-export {default as Bar} from "./bar.vue";
+export {default as Bar} from "./Bar.vue";

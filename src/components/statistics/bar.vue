@@ -20,16 +20,26 @@ export default {
       ],
       options: {
         xAxis: {
+          // type: 'category'
+        },
+        yAxis: {
           type: 'category'
         },
-        yAxis: {},
         dataset:{},
         series: [
           {
             type: "bar",
+            encode:{
+              x:1,
+              y:0
+            }
           },
           {
-            type: "bar",
+            type:'bar',
+            encode:{
+              x:"预计成交量",
+              y:"week"
+            }
           }
         ],
         tooltip: {},
@@ -41,6 +51,7 @@ export default {
     this.chart = this.$echarts.init(this.$refs.bar);
     this.options.dataset.source=this.data
     this.chart.setOption(this.options);
+    console.log(this.$echarts.util)
   },
 };
 </script>
