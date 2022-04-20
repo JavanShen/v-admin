@@ -13,6 +13,8 @@ import * as echarts from 'echarts';
 
 import '../mock/api';
 
+import './IconSvg'
+
 Vue.config.productionTip = false;
 Object.defineProperties(Vue.prototype, {
   $echarts: {
