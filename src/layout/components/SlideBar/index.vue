@@ -4,20 +4,25 @@
             <img v-if="logo" class="logo" :src="logo" alt="暂无图片">
             <span v-else>apine</span>
         </template>
-        <el-menu-item v-for="(submenus, index) in menus"
-            :index="index.toString()"
-            :key="submenus.path">
-            <i :class="[submenus.class]"></i>
-            <span slot="title">{{submenus.name}}</span>
-        </el-menu-item>
+        <Link v-for="(submenus, index) in menus" :key=submenus.path :to="submenus.path">
+            <el-menu-item :index="index.toString()">
+                <i :class="[submenus.class]"></i>
+                <span slot="title">{{submenus.name}}</span>
+            </el-menu-item>
+        </Link>
+        
     </el-menu>
 </template>
 
 <script>
 import logo from '@/assets/main/logo.svg';
 import { mapGetters,mapState } from 'vuex';
+import Link from './Link.vue'
 export default {
     name: 'SlideBar',
+    components: {
+        Link,
+    },
     data(){
         return{
             logo,
