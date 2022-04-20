@@ -6,7 +6,8 @@
         </template>
         <Link v-for="(submenus, index) in menus" :key=submenus.path :to="submenus.path">
             <el-menu-item :index="index.toString()">
-                <i :class="[submenus.class]"></i>
+                <!-- <i :class="[submenus.class]"></i> -->
+                <icon-svg :iconClass="submenus.class" class="icon"></icon-svg>
                 <span slot="title">{{submenus.name}}</span>
             </el-menu-item>
         </Link>
@@ -58,5 +59,9 @@ export default {
     width: 100%;
     height: 40px;
     margin: 10px auto;
+}
+
+.icon{
+    margin-right: 10px;
 }
 </style>

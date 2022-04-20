@@ -14,15 +14,15 @@ export default new Vuex.Store({
       routes:[{
         path: '/',
         name: '首页',
-        class: 'el-icon-s-home',
+        class: 'home',
       },{
         path: '/edit',
         name: '创作',
-        class: 'el-icon-brush',
+        class: 'edit',
       },{
         path: '/statistics',
         name: '统计',
-        class: 'el-icon-data-line',
+        class: 'statistics',
       }]
     },
 
