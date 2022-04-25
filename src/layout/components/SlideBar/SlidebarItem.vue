@@ -47,9 +47,6 @@ export default {
       default: "",
     },
   },
-  mounted() {
-    console.log(this.menus);
-  },
 };
 </script>
 
