@@ -44,9 +44,8 @@ export default {
       this.$refs.form.validate(async (valid) => {
         if(!valid) return this.$message.error('请检查表单');
         try{
-          const token=await this.$store.dispatch('login', this.userInfo);
-          await this.$store.dispatch('getUserInfo',token);
-          this.$router.push({name:'Home'}).catch(err => {
+          await this.$store.dispatch('user/login', this.userInfo);
+          this.$router.push({path:'/statistics'}).catch(err => {
             console.log(err);
           });
         }catch(e){
