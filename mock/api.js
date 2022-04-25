@@ -1,17 +1,16 @@
 import Mock from 'mockjs';
 const TOKEN={
     'admin':'123abc',
+    'editor':'456def',
+    'user':'789ghi',
     'guest':'123'
 }
 
 const ROLE={
-    '123abc':'admin',
-    '123':'guest'
-}
-
-const ROUTE={
-    'admin':['/edit','/list','/add'],
-    'guest':['/list']
+    '123abc':['admin'],
+    '456def':['editor'],
+    '789ghi':['user'],
+    '123':['guest'],
 }
 
 Mock.mock('/user/info', config => {
@@ -26,7 +25,7 @@ Mock.mock('/user/info', config => {
                 'phone': /^1[34578]\d{9}$/,
                 'address': '@county(true)',
                 'introduction': '@cparagraph(1,3)',
-                'role':ROLE[token],
+                'roles':ROLE[token],
             }
         }
     }else{
