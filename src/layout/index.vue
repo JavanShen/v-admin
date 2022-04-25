@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import {NavBar,SlideBar, AppMain} from '@/layout/components';
 
 export default {
