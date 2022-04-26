@@ -1,10 +1,17 @@
 const state=() => ({
-    editor:null
+    editor:null,
+    files: []
 })
 
 const mutations={
     setEditor(state,editor){
         state.editor=editor;
+    },
+    setFiles(state,files){
+        state.files=files;
+    },
+    addFile(state,file){
+        state.files.push(file);
     }
 }
 
