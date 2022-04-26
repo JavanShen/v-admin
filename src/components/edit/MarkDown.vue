@@ -1,7 +1,6 @@
 <template>
     <div class="markdown">
         <textarea name="markdown" id="editor" ref="editor"></textarea>
-        <el-button type="primary" size="default" @click="showText">提交</el-button>
     </div>
 </template>
 
@@ -21,9 +20,6 @@ export default {
             el: this.$refs.editor,
             spellChecker: false,
         }))
-    },
-    computed:{
-
     },
     methods:{
         showText(){
