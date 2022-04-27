@@ -24,13 +24,13 @@ export const asyncRoutes = [
                 path: 'edit',
                 name: 'Edit',
                 component: () => import('@/views/Edit.vue'),
-                meta: {title: '编辑', icon: 'edit', roles: ['admin','editor']}
+                meta: {title: '创作', icon: 'edit', roles: ['admin','editor']}
             },
             {
                 path: 'assets',
                 name: 'Assets',
                 component: () => import('@/views/Edit.vue'),
-                meta: {title: '资产', icon: 'edit', roles: ['admin']},
+                meta: {title: '资产', icon: 'wallet', roles: ['admin']},
                 children:[
                     {
                         path: 'assets-list',
@@ -44,13 +44,13 @@ export const asyncRoutes = [
                 path: 'user',
                 name: 'User',
                 component: () => import('@/views/Edit.vue'),
-                meta: {title: '用户', icon: 'edit', roles: ['admin']}
+                meta: {title: '用户', icon: 'user', roles: ['admin']}
             },
             {
                 path: 'nester',
                 name: 'Nester',
                 component: () => import('@/views/Edit.vue'),
-                meta: {title: '嵌套测试', icon: 'edit', roles: ['admin']},
+                meta: {title: '嵌套测试', icon: 'test', roles: ['admin']},
                 children: [
                     {
                         path: 'nester/nested',
@@ -91,6 +91,10 @@ export const asyncRoutes = [
                         ]
                     }
                 ]
+            },{
+                path: 'https://github.com/JavanShen/vue-element-admin',
+                name: 'ExternalLink',
+                meta: {title: 'github', icon: 'github'}
             }
         ]
     }
