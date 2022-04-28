@@ -8,11 +8,14 @@ export const fixedRoutes = [
     }
 ]
 
+import Layout from '@/layout'
+import RouterView from '@/layout/components/AppMain.vue'
+
 export const asyncRoutes = [
     {
         path: '/',
         name: 'Layout',
-        component: () => import('@/layout'),
+        component: Layout,
         children: [
             {
                 path: 'statistics',
@@ -29,12 +32,12 @@ export const asyncRoutes = [
             {
                 path: 'assets',
                 name: 'Assets',
-                component: () => import('@/views/Edit.vue'),
+                component: RouterView,
                 meta: {title: '资产', icon: 'wallet', roles: ['admin']},
                 children:[
                     {
                         path: 'assets-list',
-                        name: 'AssetsList',
+                        name: 'assertsList',
                         component: () => import('@/views/Edit.vue'),
                         meta: {title: '资产列表', roles: ['admin']}
                     }
@@ -49,7 +52,7 @@ export const asyncRoutes = [
             {
                 path: 'nester',
                 name: 'Nester',
-                component: () => import('@/views/Edit.vue'),
+                component: RouterView,
                 meta: {title: '嵌套测试', icon: 'test', roles: ['admin']},
                 children: [
                     {
@@ -79,7 +82,7 @@ export const asyncRoutes = [
                     {
                         path: 'nested5',
                         name: 'Nested5',
-                        component: () => import('@/views/Edit.vue'),
+                        component: RouterView,
                         meta: {title: '子元素5', roles: ['admin'], group: 'second'},
                         children: [
                             {
