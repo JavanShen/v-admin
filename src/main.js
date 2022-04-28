@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 
 import router from './router';
-import permission from './permission';
+import './permission';
 
 import store from './store';
 
