@@ -1,16 +1,17 @@
 <template>
     <el-upload
         :action="uploadApi"
+        ref="upload"
         :on-change="handelChange"
         :on-remove="handelRemove"
+        :on-exceed="handelExceed"
         multiple
         :limit="limit"
         :file-list="fileList"
         :auto-upload="false"
         :list-type="listType">
-        <el-button slot="trigger" size="small" type="primary">select file</el-button>
-        <!-- <el-button style="margin-left: 10px;" size="small" type="success">upload to server</el-button> -->
-        <div slot="tip" class="el-upload__tip">files with a size less than 500kb</div>
+        <el-button slot="trigger" size="small" icon="el-icon-document-add" type="primary">选择文件</el-button>
+        <div slot="tip" class="el-upload__tip">文件数量不能超过{{limit}}个,单个文件体积不能超过{{size}}M</div>
     </el-upload>
 </template>
 
@@ -28,20 +29,38 @@ export default {
         },
         listType: {
             type: String,
-            default: "file",
+            default: "text",
         },
         limit: {
             type: Number,
             default: 5,
+        },
+        size: {
+            type: Number,
+            default: 100,
+        },
+    },
+    computed:{
+        sizeLimit(){
+            return this.size * 1024 * 1024
         }
     },
     methods:{
         handelChange(file,fileList){
+            if(file.size>this.sizeLimit){
+                file.status = "out of size";
+            }
             this.$emit("change",file,fileList);
         },
         handelRemove(file,fileList){
             this.$emit('remove',file,fileList);
-        }
+        },
+        handelExceed(files,fileList){
+            this.$message.error(`文件数量不能超过${this.limit}个`);
+        },
+        clearFiles(){
+            this.$refs.upload.clearFiles();
+        },
     }
 }
 </script>
