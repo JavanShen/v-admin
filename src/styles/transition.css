@@ -1,0 +1,15 @@
+.app-main-enter-active{
+    animation: fadeInLeft 0.5s;
+}
+
+.app-main-leave-active{
+    animation: fadeOutRight 0.3s;
+}
+
+.progress-enter-active{
+    animation: fadeInUp 0.3s;
+}
+
+.progress-leave-active{
+    animation: fadeOutDown 0.3s;
+}
