@@ -11,6 +11,9 @@ import '@/theme/style/theme/index.css';
 
 import * as echarts from 'echarts';
 
+import 'animate.css';
+import '@/styles'
+
 import '../mock/api';
 
 import './IconSvg'
