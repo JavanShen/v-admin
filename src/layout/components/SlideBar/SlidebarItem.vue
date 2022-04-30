@@ -3,11 +3,11 @@
 
     <el-submenu v-else-if="menus.children" :index="index">
       <template slot="title">
-        <icon-svg
+        <svg-icon
           v-if="icon"
           class="icon"
           :icon-class="icon"
-        ></icon-svg>
+        ></svg-icon>
         <span slot="title">{{ title }}</span>
       </template>
       <slidebar-item
@@ -21,11 +21,11 @@
 
     <Link v-else :to="path">
       <el-menu-item :index="index" :key="path">
-        <icon-svg
+        <svg-icon
         v-if="icon"
         :icon-class="icon"
         class="icon"
-      ></icon-svg>
+      ></svg-icon>
         <span slot="title">{{ title }}</span>
       </el-menu-item>
     </Link>
