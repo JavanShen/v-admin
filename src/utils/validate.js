@@ -7,3 +7,7 @@
 export function isExternal(path){
     return /^(https?:|mailto:|tel:)/.test(path);
 }
+
+export function isSpecifedSize(file,size){
+    return file.size<=size;
+}
