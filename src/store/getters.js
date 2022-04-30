@@ -1,10 +1,10 @@
-import { fileToBase64 } from "../utils/file";
+import { fileToBase64,splitFileBySize } from "../utils/file";
 
 const getters={
     roles:state=>state.user.userInfo?.roles,
     menus:state=>state.permission.routes,
+
     previewImages:async state=>{
-        console.log(state.edit.files)
         let images=[];
         for(let file of state.edit.files){
             let info=file.raw
@@ -18,7 +18,14 @@ const getters={
             }
         }
         return images;
-    }
+    },
+    fileList:state=>state.edit.files,
+    splitFileList: async state=>{
+
+    },
+    fileState:state=>state.edit.fileState,
+
+    editorContent: state=>state.edit.editor.value()
 }
 
 export default getters
