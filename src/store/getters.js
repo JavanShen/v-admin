@@ -1,4 +1,4 @@
-import { fileToBase64,splitFileBySize } from "../utils/file";
+import { fileToBase64 } from "../utils/file";
 
 const getters={
     roles:state=>state.user.userInfo?.roles,
