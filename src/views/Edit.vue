@@ -1,14 +1,19 @@
 <template>
   <div class="edit">
     <mark-down></mark-down>
+
     <div class="upload">
       <image-preview :images="images"></image-preview>
-      <Progress v-if="fileState==='uploading'||fileState==='pause'" :percent="percent">
-        <el-button slot="tail" type="primary" size="mini" circle @click="changeState">
-          <svg-icon :icon-class="fileState==='pause'?'continue':'pause'"></svg-icon>
-        </el-button>
-        <span slot="info">{{progressInfo}}</span>
-      </Progress>
+
+      <transition name="progress" mode="out-in">
+        <Progress v-if="fileState==='uploading'||fileState==='pause'" :percent="percent">
+          <el-button slot="tail" type="primary" size="mini" circle @click="changeState">
+            <svg-icon :icon-class="fileState==='pause'?'continue':'pause'"></svg-icon>
+          </el-button>
+          <span slot="info">{{progressInfo}}</span>
+        </Progress>
+      </transition>
+
       <file-upload
         ref="upload"
         :file-list="fileList"

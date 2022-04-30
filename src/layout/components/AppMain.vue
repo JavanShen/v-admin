@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <transition name="el-fade-in-linear" mode="out-in">
+    <transition name="app-main" mode="out-in">
       <keep-alive :include="['Edit']">
         <router-view></router-view>
       </keep-alive>
