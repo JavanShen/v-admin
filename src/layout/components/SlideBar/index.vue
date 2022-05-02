@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     changeNav(index) {
-      console.log(index);
+      // console.log(index);
     },
   },
 };
