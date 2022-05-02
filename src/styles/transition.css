@@ -1,3 +1,4 @@
+/* 自定义 */
 .app-main-enter-active{
     animation: fadeInLeft 0.5s;
 }
@@ -12,4 +13,25 @@
 
 .progress-leave-active{
     animation: fadeOutDown 0.3s;
+}
+
+.image-preview-enter-active{
+    animation: fadeInDown 1s;
+}
+
+.image-preview-leave-active{
+    animation: fadeOutUp 1s;
+}
+
+.image-preview-move{
+    transition: 0.5s transform;
+}
+
+/* 常规 */
+.fade-up-down-enter-active{
+    animation: fadeInUp 0.5s;
+}
+
+.fade-up-down-leave-active{
+    animation: fadeOutDown 0.5s;
 }

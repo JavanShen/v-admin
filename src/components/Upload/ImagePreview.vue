@@ -1,6 +1,6 @@
 <template>
     <div class="image-preview">
-        <transition-group name="el-fade-in-linear">
+        <transition-group name="image-preview">
             <el-image v-for="image of images" :key="image.id" :src="image.src" fit="fill" style="height: 80px; width: 80px; margin: 0 5px" :preview-src-list="srcList"></el-image>
         </transition-group>
     </div>
