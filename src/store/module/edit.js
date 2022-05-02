@@ -21,6 +21,9 @@ const mutations={
     clearFiles(state){
         state.files=[];
     },
+    startUpload(state){
+        state.fileState='uploading';
+    },
     pauseUpload(state){
         state.fileState='pause';
     },

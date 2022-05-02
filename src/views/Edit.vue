@@ -63,7 +63,7 @@ export default {
       sizeLimit: 500,
 
       isRunning: false,
-      currentFile: {name:'',index:0},
+      currentFile: {name:'初始化中',index:0},
 
       splitFiles: []
     };
@@ -100,7 +100,6 @@ export default {
       });
     },
     fileState(val) {
-      console.log(val)
       if(val==='uploading'){
         this.uploadFiles()
       }else if(val==='finish'){
@@ -139,8 +138,9 @@ export default {
     },
     async submit() {
       if(this.isRunning) return this.$message.warning('正在上传中...');
-      let {fileList}=this
-      let sizeLimit=this.sizeLimit*1024*1024
+
+      let fileList=this.fileList,
+      sizeLimit=this.sizeLimit*1024*1024
 
       this.isRunning=true
 
@@ -150,10 +150,9 @@ export default {
 
       try{
         await this.submitArticle()
-        this.splitFiles=await this.splitAllFile(fileList)
 
-        if(this.splitFiles.length>0){
-          this.$store.commit('edit/continueUpload');
+        if(fileList.length>0){
+          this.$store.commit('edit/startUpload');
         }else{
           this.isRunning=false
         }
@@ -196,6 +195,11 @@ export default {
       }
     },
     async uploadFiles(splitFiles=this.splitFiles){
+      if(splitFiles.length===0) {
+        this.splitFiles=await this.splitAllFile(this.fileList)
+        splitFiles=this.splitFiles
+      }
+      
       for(let i=0,len=splitFiles.length;i<len;i++){
         let {name,files}=splitFiles[i],
             index=i+1
@@ -236,7 +240,7 @@ export default {
 <style scoped>
 .upload {
   float: left;
-  width: 600px;
+  width: 40vw;
   height: auto;
 }
 
