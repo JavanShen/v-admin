@@ -26,7 +26,6 @@ router.beforeEach(async (to, from, next) => {
                             component: () => import('@/views/NotFound.vue'),
                         }
                     )
-                    console.log(router.getRoutes())
 
                     next({ ...to, replace: true });
                 } catch (e) {
