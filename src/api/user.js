@@ -6,3 +6,11 @@ export function getUserList() {
         method: 'get'
     })
 }
+
+export function updateUser(data) {
+    return service({
+        url: '/user/update',
+        method: 'post',
+        data
+    })
+}
