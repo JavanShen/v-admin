@@ -9,7 +9,7 @@
         <el-pagination
             @size-change="sizeChange"
             :current-page.sync="currentPage"
-            :page-sizes="pageSizes"
+            :page-sizes="pageSizesWithAll"
             :page-size="pageSize"
             layout="total, sizes, prev, pager, next, jumper"
             :total="totalNum"
@@ -42,10 +42,6 @@ export default {
             pageSize: 10,
             pageSizes: [5, 10, 20, 50],
             currentPage: 1,
-            currentEdit: {
-                index: 0,
-                tableData: [],
-            },
 
             showEdit: false,
             editForm: {},
@@ -64,11 +60,6 @@ export default {
 
         this.today = new Date();
         this.getData()
-    },
-    watch: {
-        totalData(val) {
-            this.pageSizes.push(val.length);
-        },
     },
     computed: {
         tableData() {
@@ -102,8 +93,8 @@ export default {
         totalNum() {
             return this.totalData.length;
         },
-        currentEditIndex() {
-            return (this.currentPage-1)*this.pageSize+this.currentEdit.index;
+        pageSizesWithAll() {
+            return this.pageSizes.concat(this.totalNum)
         }
     },
     methods: {
@@ -113,10 +104,6 @@ export default {
         },
         editRow(row,index,tableData) {
             this.editForm = { ...row };
-            this.currentEdit = {
-                index,
-                tableData,
-            };
             this.showEdit = true;
         },
         updateUserInfo(val){
@@ -125,7 +112,9 @@ export default {
                     let data=res.data.data
                     data.age=betweenDate(data.birthday,this.today)
                     
-                    this.totalData.splice(this.currentEditIndex,1,res.data.data);
+                    let id=res.data.data.id,
+                    index=this.totalData.findIndex(item=>item.id===id)
+                    this.totalData.splice(index,1,res.data.data);
 
                     this.$message.success("修改成功");
 
