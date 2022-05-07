@@ -45,7 +45,7 @@ export default {
         if(!valid) return this.$message.error('请检查表单');
         try{
           await this.$store.dispatch('user/login', this.userInfo);
-          this.$router.push({path:'/statistics'}).catch(err => {
+          this.$router.push({path:'/'}).catch(err => {
             console.log(err);
           });
         }catch(e){
