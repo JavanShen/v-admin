@@ -51,7 +51,6 @@ export default {
     this.chart = this.$echarts.init(this.$refs.bar);
     this.options.dataset.source=this.data
     this.chart.setOption(this.options);
-    console.log(this.$echarts.util)
   },
 };
 </script>
