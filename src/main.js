@@ -9,7 +9,17 @@ import store from './store';
 import Element from 'element-ui';
 import '@/theme/style/theme/index.css';
 
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
+import {
+  ToolboxComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  DatasetComponent
+} from 'echarts/components';
+import { PieChart, BarChart } from 'echarts/charts';
+import { LabelLayout } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
 
 import 'animate.css';
 import '@/styles'
@@ -17,6 +27,18 @@ import '@/styles'
 import '../mock/api';
 
 import './IconSvg'
+
+echarts.use([
+  ToolboxComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  DatasetComponent,
+  PieChart,
+  BarChart,
+  LabelLayout,
+  CanvasRenderer
+])
 
 Vue.config.productionTip = false;
 Object.defineProperties(Vue.prototype, {
