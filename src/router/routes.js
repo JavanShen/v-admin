@@ -38,7 +38,7 @@ export const asyncRoutes = [
                     {
                         path: 'assets-list',
                         name: 'assertsList',
-                        component: () => import('@/views/Edit.vue'),
+                        component: () => import('@/views/Empty.vue'),
                         meta: {title: '资产列表', roles: ['admin']}
                     }
                 ]
@@ -58,25 +58,25 @@ export const asyncRoutes = [
                     {
                         path: 'nester/nested',
                         name: 'Nested',
-                        component: () => import('@/views/Edit.vue'),
+                        component: () => import('@/views/Empty.vue'),
                         meta: {title: '子元素1', roles: ['admin'], group: 'first'}
                     },
                     {
                         path: 'nested2',
                         name: 'Nested2',
-                        component: () => import('@/views/Edit.vue'),
+                        component: () => import('@/views/Empty.vue'),
                         meta: {title: '子元素2', roles: ['admin'], group: 'first'}
                     },
                     {
                         path: 'nested3',
                         name: 'Nested3',
-                        component: () => import('@/views/Edit.vue'),
+                        component: () => import('@/views/Empty.vue'),
                         meta: {title: '子元素3',roles: ['admin']}
                     },
                     {
                         path: 'nested4',
                         name: 'Nested4',
-                        component: () => import('@/views/Edit.vue'),
+                        component: () => import('@/views/Empty.vue'),
                         meta: {title: '子元素4', roles: ['admin'], group: 'second'}
                     },
                     {
@@ -88,7 +88,7 @@ export const asyncRoutes = [
                             {
                                 path: 'nested6',
                                 name: 'Nested6',
-                                component: () => import('@/views/Edit.vue'),
+                                component: () => import('@/views/Empty.vue'),
                                 meta: {title: '子元素6', roles: ['admin']}
                             }
                         ]
