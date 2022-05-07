@@ -1,7 +1,7 @@
 <template>
 <div class="main" :style="{backgroundImage:'url('+bg+')'}">
     <div class="container">
-        <div class="decoration"></div>
+        <div class="decoration" :style="{backgroundImage:'url('+decoration+')'}"></div>
         <div class="form">
             <login-form></login-form>
         </div>
@@ -12,6 +12,7 @@
 <script>
 import LoginForm from '@/components/LoginForm.vue';
 import bg from '@/assets/login/login-bg.jpg';
+import decoration from '@/assets/login/login-decoration2.jpg';
 export default {
     name: 'Login',
     components: {
@@ -19,7 +20,8 @@ export default {
     },
     data(){
         return {
-            bg
+            bg,
+            decoration
         }
     },
 };
@@ -59,10 +61,13 @@ export default {
     border-radius: 25px;
     box-shadow: 0 0 10px rgba(0,0,0,.2);
     z-index: 12;
+    overflow: hidden;
 }
 
 .decoration{
     flex: 0.4;
+    height: 100%;
+    background-size: cover;
 }
 
 .form{

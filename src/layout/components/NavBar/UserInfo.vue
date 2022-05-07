@@ -1,5 +1,5 @@
 <template>
-    <el-dropdown placement="bottom">
+    <el-dropdown placement="bottom" @command="handelCommand">
         <el-avatar icon="el-icon-user-solid" size="medium" shape="circle" fit="fill"></el-avatar>
         <el-dropdown-menu slot="dropdown">
             <el-dropdown-item v-for="item in items"
@@ -19,7 +19,7 @@ export default {
                 {
                     key: '1',
                     title: '个人中心',
-                    command: 'user-center'
+                    command: 'user'
                 },
                 {
                     key: '2',
@@ -28,6 +28,11 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        handelCommand(command) {
+            this.$emit(command);
+        }  
     }
 }
 </script>

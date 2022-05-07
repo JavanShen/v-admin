@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <switch-btn></switch-btn>
-        <user-info class="avatar"></user-info>
+        <user-info class="avatar" @logout="logout"></user-info>
     </div>
 </template>
 
@@ -14,6 +14,12 @@ export default {
     components: {
         UserInfo,
         SwitchBtn
+    },
+    methods: {
+        logout() {
+            this.$store.dispatch('user/logout');
+            this.$router.push({path: '/login',replace: true});
+        }
     }
 }
 </script>

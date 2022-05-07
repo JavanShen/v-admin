@@ -35,6 +35,10 @@ const mutations={
     setRoutes(state,routes){
         state.addRoutes=routes
         state.routes=fixedRoutes.concat(routes[0]?.name==='Layout'?routes[0].children:routes)
+    },
+    clearRoutes(state){
+        state.routes=[]
+        state.addRoutes=[]
     }
 }
 

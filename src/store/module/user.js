@@ -1,5 +1,5 @@
 //用户信息
-import { getToken, setToken } from '@/utils/auth'
+import { getToken, setToken, removeToken } from '@/utils/auth'
 import { loginByUserName, getUserInfo } from '@/api/login'
 
 const state = () => {
@@ -30,6 +30,11 @@ const actions = {
                 return Promise.reject(data.msg);
             }
         })
+    },
+    logout({ commit }) {
+        commit('setToken', '');
+        commit('setUserInfo', {});
+        removeToken();
     },
     getUserInfo({ commit }, token) {
         return getUserInfo(token).then(res => {
