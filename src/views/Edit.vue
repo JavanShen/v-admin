@@ -142,11 +142,11 @@ export default {
       let fileList=this.fileList,
       sizeLimit=this.sizeLimit*1024*1024
 
-      this.isRunning=true
-
       for(let file of fileList){
         if(!isSpecifedSize(file,sizeLimit)) return this.$message.error(`文件${file.name}体积超过${this.sizeLimit}M`);
       }
+        
+      this.isRunning=true
 
       try{
         await this.submitArticle()
@@ -231,6 +231,8 @@ export default {
       this.$message.success('文件上传完成')
       this.$refs.upload.clearFiles()
       this.$store.commit('edit/clearFiles')
+      this.splitFiles=[]
+      this.currentFile={name:'初始化中',index:0}
       this.isRunning=false
     }
   },
