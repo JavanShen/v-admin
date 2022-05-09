@@ -23,10 +23,6 @@
     animation: fadeOutUp 1s;
 }
 
-.image-preview-move{
-    transition: 0.5s transform;
-}
-
 /* 常规 */
 .fade-up-down-enter-active{
     animation: fadeInUp 0.5s;
