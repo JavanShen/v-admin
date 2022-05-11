@@ -13,3 +13,7 @@ export function betweenDate(start,end,type='year'){
         return (endDate.getFullYear()-startDate.getFullYear())*365+(endDate.getMonth()-startDate.getMonth())*30+(endDate.getDate()-startDate.getDate());
     }
 }
+
+export const today=new Date()
+
+export const todayStart=new Date(today.getFullYear(),today.getMonth(),today.getDate())
