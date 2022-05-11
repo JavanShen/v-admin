@@ -50,6 +50,12 @@ export const asyncRoutes = [
                 meta: {title: '用户', icon: 'user', roles: ['admin']}
             },
             {
+                path: 'todo',
+                name: 'Todo',
+                component: () => import('@/views/todo'),
+                meta: {title: '待办', icon: 'todo', roles: ['admin']}
+            },
+            {
                 path: 'nester',
                 name: 'Nester',
                 component: RouterView,
