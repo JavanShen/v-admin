@@ -10,30 +10,36 @@
             </el-col>
             <el-col :span="23" :offset="0">
                 <el-input
-                    v-model="taskContent"
+                    :value="value"
                     placeholder="新建任务"
                     size="normal"
                     clearable
-                    @change="handelInputChange"
+                    @input="handelInputBlur"
                 ></el-input>
             </el-col>
         </el-row>
         <el-row>
-            <el-col :span="8" :offset="0">
-                <date-time-picker class="date-time-picker"></date-time-picker>
+            <el-col :span="24">
+                <Tag></Tag>
             </el-col>
-            
+        </el-row>
+        <el-row type="flex" align="middle">
+            <el-col :span="8" :offset="0">
+                <date-time-picker class="date-time-picker" size="small"></date-time-picker>
+            </el-col>
         </el-row>
     </el-card>
 </template>
 
 <script>
 import DateTimePicker from "@/components/picker/DateTimePicker";
+import Tag from "@/components/Tag";
 
 export default {
     name: "Task",
     components: {
-        DateTimePicker
+        DateTimePicker,
+        Tag,
     },
     props: {
         shadowType: {
@@ -44,13 +50,14 @@ export default {
             type: Boolean,
             default: false,
         },
-        taskContent: {
+        value: {
             type: String,
             default: "",
         },
     },
     methods: {
-        handelInputChange(val) {
+        handelInputBlur(val) {
+            console.log(val)
             this.$emit("input", val);
         },
         handelCheckChange(val) {

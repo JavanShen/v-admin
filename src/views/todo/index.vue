@@ -1,6 +1,6 @@
 <template>
     <div class="todo">
-        <Task :isComplete.sync="isComplete"></Task>
+        <Task :isComplete.sync="isComplete" v-model="taskContent"></Task>
 
         <el-drawer
             title="日程安排"
@@ -18,7 +18,7 @@
 
 <script>
 import Calendar from "@/components/date/Calendar";
-import Task from "./components/task";
+import Task from "./components/Task";
 
 export default {
     name: "Todo",
@@ -32,6 +32,7 @@ export default {
             dates: "repeat",
 
             isComplete: false,
+            taskContent: "",
         };
     },
     methods: {
