@@ -1,5 +1,5 @@
 <template>
-    <el-date-picker :value="time" type="datetime" size="normal" placeholder="选择日期时间">
+    <el-date-picker :value="time" type="datetime" :size="size" placeholder="选择日期时间">
     </el-date-picker>
     
 </template>
@@ -11,6 +11,10 @@ export default {
         time: {
             type: Date,
             default: () => new Date()
+        },
+        size: {
+            type: String,
+            default: "normal"
         },
     }
 }
