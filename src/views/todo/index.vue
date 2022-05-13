@@ -1,6 +1,6 @@
 <template>
     <div class="todo">
-        <Task :isComplete.sync="isComplete" v-model="taskContent"></Task>
+        <Task></Task>
 
         <el-drawer
             title="日程安排"
@@ -30,9 +30,6 @@ export default {
         return {
             isOpen: false,
             dates: "repeat",
-
-            isComplete: false,
-            taskContent: "",
         };
     },
     methods: {
