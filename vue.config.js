@@ -22,5 +22,18 @@ module.exports = {
             symbolId: 'icon-[name]'
         })
         .end()
+
+        config.module
+        .rule('compile')
+        .test(/\.js$/)
+        .include
+            .add(resolve('node_modules/element-ui/packages'))
+            .add(resolve('node_modules/element-ui/src'))
+            .end()
+        .exclude
+            .add(resolve('node_modules/element-ui/src/utils/date.js'))
+            .end()
+        .use('babel')
+        .loader('babel-loader')
     }
 }
