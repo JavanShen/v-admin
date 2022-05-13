@@ -25,7 +25,9 @@ const getters={
     },
     fileState:state=>state.edit.fileState,
 
-    editorContent: state=>state.edit.editor.value()
+    editorContent: state=>state.edit.editor.value(),
+
+    todoList: state=>state.todo.tasks,
 }
 
 export default getters
