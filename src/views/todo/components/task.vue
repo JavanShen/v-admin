@@ -3,66 +3,68 @@
         <el-row type="flex" align="middle">
             <el-col :span="1" :offset="0">
                 <el-checkbox
-                    :value="isComplete"
+                    v-model="isComplete"
                     :indeterminate="false"
-                    @change="handelCheckChange"
                 ></el-checkbox>
             </el-col>
             <el-col :span="23" :offset="0">
                 <el-input
-                    :value="value"
+                    v-model="taskContent"
                     placeholder="新建任务"
                     size="normal"
                     clearable
-                    @input="handelInputBlur"
                 ></el-input>
             </el-col>
         </el-row>
         <el-row>
             <el-col :span="24">
-                <Tag></Tag>
+                <Tag :tag-data="tagData" :tag-history="tagHistory" @addTag="addTag"></Tag>
             </el-col>
         </el-row>
-        <el-row type="flex" align="middle">
+        <el-row class="info" type="flex" align="middle">
             <el-col :span="8" :offset="0">
-                <date-time-picker class="date-time-picker" size="small"></date-time-picker>
+                <Info @change="changeInfo"></Info>
             </el-col>
         </el-row>
     </el-card>
 </template>
 
 <script>
-import DateTimePicker from "@/components/picker/DateTimePicker";
+import DatePicker from "@/components/picker/DatePicker.vue";
 import Tag from "@/components/Tag";
+import Info from "./Info.vue"
 
 export default {
     name: "Task",
     components: {
-        DateTimePicker,
+        DatePicker,
         Tag,
+        Info,
     },
     props: {
         shadowType: {
             type: String,
             default: "never",
         },
-        isComplete: {
-            type: Boolean,
-            default: false,
-        },
-        value: {
-            type: String,
-            default: "",
-        },
+    },
+    data() {
+        return {
+            isComplete: false,
+            taskContent: "",
+
+            tagData: [],
+            tagHistory: [],
+
+            info:{}
+        }
     },
     methods: {
-        handelInputBlur(val) {
-            console.log(val)
-            this.$emit("input", val);
+        changeInfo(info) {
+            this.info=info;
         },
-        handelCheckChange(val) {
-            this.$emit("update:isComplete", val);
-        },
+        addTag(){
+            
+        }
     },
 };
 </script>
@@ -74,5 +76,9 @@ export default {
 
 .el-row:not(:last-child) {
     margin-bottom: 10px;
+}
+
+.info {
+    text-align: left;
 }
 </style>
