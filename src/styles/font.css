@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Lxgw Wenkai";
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url("/fonts/LXGWWenKai-Regular.ttf");
+}
+
+html,body{
+    font-family: "Lxgw Wenkai";
+}
+
+button {
+    font-family: "Lxgw Wenkai";
+}
+
+input{
+    font-family: "Lxgw Wenkai";
+}
