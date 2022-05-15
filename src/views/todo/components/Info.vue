@@ -3,14 +3,14 @@
         <date-picker @change="dateConfirm">
             <div class="content">
                 <svg-icon class="icon" icon-class="time"></svg-icon>
-                <span>{{date}}</span>
+                <span>{{date|dateType}}</span>
             </div>
         </date-picker>
     
         <repeat-picker @change="repeatChange">
             <div class="content">
                 <svg-icon class="icon" icon-class="repeat"></svg-icon>
-                <span>{{repeat}}</span>
+                <span>{{repeat|repeatType}}</span>
             </div>
         </repeat-picker>
     </div>
@@ -27,11 +27,25 @@ export default {
         DatePicker,
         RepeatPicker,
     },
+    props: {
+        infoDate: {
+            type: Date,
+            default: new Date(),
+        },
+        infoRepeat: {
+            type: Number,
+            default: 0,
+        },
+    },
     data() {
         return {
-            date: "设定日期",
-            repeat: "不重复",
+            date: new Date(),
+            repeat: 0,
         }
+    },
+    created (){
+        this.date = this.infoDate;
+        this.repeat = this.infoRepeat;
     },
     watch: {
         date(val) {
@@ -47,33 +61,37 @@ export default {
             });
         },
     },
-    methods: {
-        dateConfirm(date) {
-            if(isSameDay(date)) {
-                this.date='今天';
-            }else if(isSameYear(date)){
-                this.date=getDateZh(date).slice(5);
-            }else{
-                this.date=getDateZh(date);
+    filters: {
+        repeatType(val) {
+            switch(val) {
+                case 0:
+                    return '不重复';
+                case 1:
+                    return '每天';
+                case 7:
+                    return '每周';
+                case 30:
+                    return '每月';
+                default:
+                    return `每${val}天`;
             }
         },
-        repeatChange(days) {
-            switch(days) {
-                case 0:
-                    this.repeat='不重复';
-                    break;
-                case 1:
-                    this.repeat='每天';
-                    break;
-                case 7:
-                    this.repeat='每周';
-                    break;
-                case 30:
-                    this.repeat='每月';
-                    break;
-                default:
-                    this.repeat=`每${days}天`;
+        dateType(date) {
+            if(isSameDay(date)) {
+                return '今天';
+            }else if(isSameYear(date)){
+                return getDateZh(date).slice(5);
+            }else{
+                return getDateZh(date);
             }
+        }
+    },
+    methods: {
+        dateConfirm(date) {
+            this.date = date;
+        },
+        repeatChange(days) {
+            this.repeat=days
         },
     },
 }
