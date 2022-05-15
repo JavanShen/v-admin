@@ -1,7 +1,8 @@
 <template>
     <el-popover
         placement="bottom"
-        trigger="click">
+        trigger="click"
+        :disabled="!isEdit">
         <date-panel v-model="date" :show-time="false" @change="handelChange"></date-panel>
         <slot slot="reference"></slot>
     </el-popover>
@@ -20,9 +21,7 @@ export default {
             date: new Date(),
         };
     },
-    created() {
-        this.$emit("change", this.date);
-    },
+    inject: ['isEdit'],
     methods: {
         handelChange(date) {
             this.$emit("change", date);

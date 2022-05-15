@@ -1,7 +1,8 @@
 <template>
     <el-popover
         placement="bottom"
-        trigger="click">
+        trigger="click"
+        :disabled="!isEdit">
         <div class="switch">
             <span class="title">是否重复:</span>
             <el-switch v-model="isRepeat"></el-switch>
@@ -24,6 +25,7 @@ export default {
             days: 0
         };
     },
+    inject: ['isEdit'],
     watch: {
         isRepeat(val) {
             if(val){
