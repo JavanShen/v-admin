@@ -9,7 +9,7 @@
         </div>
         <div class="days" v-if="isRepeat">
             <span>每</span>
-            <el-input-number class="input-number" v-model="days" :min="1" :max="100" size="mini"></el-input-number>
+            <el-input-number class="input-number" v-model="dayNum" :min="1" :max="100" size="mini"></el-input-number>
             <span>天重复</span>
         </div>
         <slot slot="reference"></slot>
@@ -22,21 +22,36 @@ export default {
     data() {
         return {
             isRepeat: false,
-            days: 0
         };
+    },
+    props: {
+        days: {
+            type: Number,
+            default: 0,
+        },
     },
     inject: ['isEdit'],
     watch: {
         isRepeat(val) {
             if(val){
-                this.days = 1;
+                this.dayNum = 1;
             }else{
-                this.days = 0;
+                this.dayNum = 0;
             }
         },
         days(val) {
-            this.$emit("change", val);
+            val===0 && (this.isRepeat = false);
         }
+    },
+    computed: {
+        dayNum: {
+            get: function() {
+                return this.days;
+            },
+            set: function(val) {
+                this.$emit("change", val);
+            },
+        },
     }
 }
 </script>

@@ -3,7 +3,7 @@
         placement="bottom"
         trigger="click"
         :disabled="!isEdit">
-        <date-panel v-model="date" :show-time="false" @change="handelChange"></date-panel>
+        <date-panel v-model="innerDate" :show-time="false"></date-panel>
         <slot slot="reference"></slot>
     </el-popover>
 </template>
@@ -16,15 +16,21 @@ export default {
     components: {
         DatePanel,
     },
-    data() {
-        return {
-            date: new Date(),
-        };
+    props: {
+        date: {
+            type: Date,
+            default: () => new Date(),
+        }
     },
     inject: ['isEdit'],
-    methods: {
-        handelChange(date) {
-            this.$emit("change", date);
+    computed: {
+        innerDate: {
+            get() {
+                return this.date;
+            },
+            set(val) {
+                this.$emit("change", val);
+            },
         },
     },
 }
