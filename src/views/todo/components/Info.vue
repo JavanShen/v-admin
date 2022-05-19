@@ -1,14 +1,14 @@
 <template>
     <div>
-        <date-picker @change="dateConfirm">
-            <div class="content">
+        <date-picker :date="infoDate" @change="dateConfirm">
+            <div class="content" :class="{'active':isEdit}">
                 <svg-icon class="icon" icon-class="time"></svg-icon>
                 <span>{{date|dateType}}</span>
             </div>
         </date-picker>
     
-        <repeat-picker @change="repeatChange">
-            <div class="content">
+        <repeat-picker :days="infoRepeat" @change="repeatChange">
+            <div class="content" :class="{'active':isEdit}">
                 <svg-icon class="icon" icon-class="repeat"></svg-icon>
                 <span>{{repeat|repeatType}}</span>
             </div>
@@ -27,6 +27,7 @@ export default {
         DatePicker,
         RepeatPicker,
     },
+    inject: ['isEdit'],
     props: {
         infoDate: {
             type: Date,
@@ -103,10 +104,13 @@ export default {
     padding: 5px 8px;   
     border-radius: 6px;
     text-align: left;
+}
+
+.active{
     cursor: pointer;
 }
 
-.content:hover{
+.active:hover{
     background-color: #e9e9e9;
 }
 
