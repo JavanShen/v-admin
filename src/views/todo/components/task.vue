@@ -1,5 +1,5 @@
 <template>
-    <el-card :shadow="shadowType" :body-style="{ padding: '20px' }">
+    <el-card :class="{'complete':isComplete}" :shadow="shadowType" :body-style="{ padding: '20px' }">
         <el-row type="flex" align="middle">
             <el-col :span="1" :offset="0">
                 <el-checkbox
@@ -183,7 +183,10 @@ export default {
                     tagData: this.tagData,
                     info: this.info,
                 });
-                this.taskContent = "";
+
+                this.dataReset()
+
+                this.getHistoryTag()
             }
         },
         //utils
@@ -198,6 +201,19 @@ export default {
                 return this.tagHistory.findIndex((item) => item.id === id);
             }
             return this.tagHistory.find((item) => item.id === id);
+        },
+        dataReset(target=this.$data,source=this.$options.data()) {
+            for(let key in source){
+                if(target[key]!==source[key]){
+                    if(typeof source[key]==='object'){
+                        for(let key2 in source[key]){
+                            this.$set(this[key],key2,key2==='date'?new Date():source[key][key2]);
+                        }
+                    }
+
+                    target[key]=source[key];
+                }
+            }
         },
     },
 };
@@ -225,5 +241,9 @@ export default {
     border: none;
     font-size: 16px;
     padding: 0;
+}
+
+.complete {
+    opacity: 0.5;
 }
 </style>
