@@ -1,5 +1,5 @@
 # v-admin
-预览地址: [v-admin](https://dogpaw.top)
+预览地址: [v-admin](https://javanshen.github.io/vue-element-admin/)
 
 用户名:
 + admin
